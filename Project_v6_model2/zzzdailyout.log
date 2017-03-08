@@ -1,0 +1,5 @@
+main> [2016-03-11 12:35:37] [FoodStoreDAO] [13] [DEBUG] AAAA 
+main> [2016-03-11 12:35:37] [FoodStoreDAO] [14] [INFO] BBBB 
+main> [2016-03-11 12:35:37] [FoodStoreDAO] [15] [WARN] CCCC 
+main> [2016-03-11 12:35:37] [FoodStoreDAO] [16] [ERROR] DDDD 
+main> [2016-03-11 12:35:37] [FoodStoreDAO] [17] [FATAL] EEEE 
