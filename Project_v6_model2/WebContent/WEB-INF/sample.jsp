@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <h1>Error</h1>
+  <h1>비밀번호를 잘못 입력 했습니다.</h1>
 </body>
 </html>

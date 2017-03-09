@@ -3,6 +3,7 @@ package org.zerock.controller;
 import javax.servlet.http.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,24 +35,7 @@ public class DeleteController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-//		
-//		FoodStore fsVO = new FoodStore();
-//		fsVO.setPwd( Integer.parseInt(request.getParameter("pwd") ) );
-//		int num = Integer.parseInt(request.getParameter("num"));
-//		//String pwd = request.getParameter("pwd");
-//		
-//		//try {
-//		//	service.getDelete(num, fsVO);
-//		//} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			//e.printStackTrace();
-//		//}
-//		
-//		//System.out.println(num);
-//		//System.out.println("-------------------------------------");
-//		//System.out.println(pwd);
-		
+			throws ServletException, IOException {		
 		//delete_model2 view 띄우기:-)
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/fs/model2_delete.jsp");
 		dispatcher.forward(request, response);
@@ -62,10 +46,8 @@ public class DeleteController extends HttpServlet {
 			throws ServletException, IOException {
 
 		logger.info("do Post called");
-
 		// post방식에서 한글깨짐 현상은 다음과 같이 encoding방식을 UTF-8로 setting해준다.
 		request.setCharacterEncoding("UTF-8");
-		
 		RequestDispatcher dispatcher = null;
 		FoodStore fsVO = new FoodStore();
 		
@@ -83,15 +65,18 @@ public class DeleteController extends HttpServlet {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
-			dispatcher = request.getRequestDispatcher("/WEB-INF/sample.jsp");
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('패스워드 정보 오류');");
+	        out.println("history.back();"); // 이전페이지로 이동
+	        out.println("</script>");
+	        out.close(); // 스트림 자원 반환
+	        return;
+			//dispatcher = request.getRequestDispatcher("/WEB-INF/sample.jsp");
 		}
-		
-		// 삭제에 성공했을 시에 result.jsp에 서블릿의 요청을 전송하고,
-		// 실패했을 시에 error.jsp에 서블릿의 요청을 전송한다.
-		dispatcher.forward(request, response);
-		
-		System.out.print("1111");
-		
-	}
 
+		dispatcher.forward(request, response);
+		System.out.print("1111");
+	}
 }

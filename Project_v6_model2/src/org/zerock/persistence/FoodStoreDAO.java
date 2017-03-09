@@ -110,6 +110,7 @@ public class FoodStoreDAO {
 
 		if (judge < 1) {
 			System.out.println("비번 틀림");
+			//return false;
 			throw new Exception("Delete FAILED");
 		} else {
 			System.out.println("Delete COMPLETE");
