@@ -160,14 +160,105 @@ public class FoodStoreDAO {
 		}.executeJob();
 
 		return fsView;
-	}// getList()
+	}
+	
+	// DB에서 수정할 글을 불러온다.
+	public  List<FoodStore> getEdit(int num) throws Exception {
+	
+		StringBuffer query = new StringBuffer();
 		
+		query.append(" SELECT ");
+		query.append(" USERNAME,TITLE, CONTENT " );
+		query.append(" FROM ");
+		query.append(" board2  WHERE num= " + num );
+		List<FoodStore> fsView = new ArrayList<>();
+		
+		new AbstractExecutor() {
+
+			@Override
+			protected void execute() throws Exception {
+				// TODO Auto-generated method stub
+
+				con.setAutoCommit(false);
+				pstmt = con.prepareStatement(query.toString());
+
+				// 쿼리를 실행후 결과를 ResultSet으로 받아온다.
+				rs = pstmt.executeQuery();
+
+				int idx = 0;
+				// ResultSet클래스의 next()메소드는 현재위치의 row에서 다음의 row로 커서를 옮긴다.
+				// 처음 호출될때 가장 첫 줄의 row 위치로 커서를 옮긴다.
+				while (rs.next()) {
+
+					FoodStore fsVO = new FoodStore();
+	
+					fsVO.setUsername(rs.getString(1));
+					fsVO.setTitle(rs.getString(2));
+					fsVO.setContent(rs.getString(3));
+					//fsVO.setPwd(rs.getInt(4));
+					fsView.add(idx, fsVO);
+					idx++;
+				} // while()
+			}// execute()
+		}.executeJob();
+
+		return fsView;
+	}//
+	
+	// DB에서 글 수정
+	public boolean getEdit2(FoodStore vo) throws Exception {
+		
+		StringBuffer query = new StringBuffer();
+		
+		query.append(" UPDATE ");
+		query.append(" board2 " );
+		query.append(" SET TITLE =? , CONTENT =? ");
+		query.append(" WHERE num= ? ");
+		List<FoodStore> fsView = new ArrayList<>();
+		StringBuilder test = new StringBuilder();
+		
+		String title = vo.getTitle();
+		String content = vo.getContent();
+		int num = vo.getNumber();
+		
+		new AbstractExecutor() {
+
+			@Override
+			protected void execute() throws Exception {
+				
+				con.setAutoCommit(false);
+				
+				// 매개변수로 받아온 데이터베이스에 보낼 SQL문으로 PreparedStatement객체를 만든다.
+				pstmt = con.prepareStatement(query.toString());
+
+				int idx = 1;
+				pstmt.setString(idx++, title);
+				pstmt.setString(idx++, content);
+				pstmt.setInt(idx++, num);
+
+				// insert, update, delete같은 DML쿼리는 PreparedStatment클래스의 executeUpdate()메소드를
+				// 호출하여 쿼리를 실행 한다. 업데이트된(변경된) row의 수를 반환한다. 
+				int count = pstmt.executeUpdate();
+				test.append(count + "");
+
+				// DML은 autocommit이 이루어지지 않으므로 다음처럼 commit을 수동으로 해주어야한다.
+				con.commit();
+			}// execute()
+		}.executeJob();
+
+		int judge = Integer.parseInt(test.toString());
+		if (judge < 1) {
+			throw new Exception("Update FAILED");
+		} else {
+			System.out.println("Update COMPLETE");
+			return true;
+		}
+	}
 
 	// DB에서 게시글 리스트 받아온다.
 	// 쿼리를 DB로 날려서 모든 row들을 ResultSet으로 받아온다. 이후, 이 ResultSet의 모든 row들을
 	// 순회하며 각 컬럼의 값들로 VO 를 만들어 리스트를 만들어 서비스로 반환한다.
 	public List<FoodStore> getList() throws Exception {
-
 
 		StringBuffer query = new StringBuffer();
 		

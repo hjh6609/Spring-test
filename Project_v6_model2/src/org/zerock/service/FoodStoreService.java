@@ -26,8 +26,6 @@ public class FoodStoreService {
 
 	// 게시판 리스트를 데이터베이스에서 가져온다. 
 	public List<FoodStore> getList() throws Exception {
-		
-		
 		return dao.getList();
 	}// getList()
 	
@@ -43,10 +41,14 @@ public class FoodStoreService {
 		return dao.getDelete(vo);
 	}// getDelete()
 	
-	// 삭제할 게시글 찾기2 
-	//	public List<FoodStore> getDelete2(FoodStore vo) throws Exception {
-	//		boolean judge = dao.getDelete2(vo);
-	//		return dao.getDelete2();
-	//	}// getList2()
+	// 수정할 게시글 찾기
+	public List<FoodStore> getEdit(int num) throws Exception {
+		return dao.getEdit(num);
+	}//
+	
+	// 수정할 게시글 수정
+	public boolean getEdit2(FoodStore vo) throws Exception {
+		return dao.getEdit2(vo);
+	}// 
 
 }

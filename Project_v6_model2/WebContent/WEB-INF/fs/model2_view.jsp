@@ -38,7 +38,7 @@
 			<input type=button value="글쓰기" OnClick="window.location='register' ">
 			<input type=button value="답글" >
 			<input type=button value="목록"   OnClick="window.location='list'">
-			<input type=button value="수정" >
+			<input type=button value="수정"  OnClick="window.location='model2_edit?num=<%=num%>' ">
 			<input type=button value="삭제"  OnClick="window.location='model2_delete?num=<%=num%>'">
 		</td>
 	</tr>
