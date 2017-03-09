@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%String num = request.getParameter("num"); %>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,9 +22,7 @@
 </script>
 
 </head>
-
 <body>
-
 <center>
 	<form name="f" method="post">
 	<hr width=500 color=red>
@@ -40,9 +35,7 @@
 	<input type="button" value="삭제" onclick="check()">
 	<input type="reset" value="다시쓰기">
 	<hr width=500 color=red>
-	
 	</form>
 </center>
-
 </body>
 </html>

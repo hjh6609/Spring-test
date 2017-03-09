@@ -41,7 +41,6 @@ public class DeleteController extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -59,7 +58,6 @@ public class DeleteController extends HttpServlet {
 			service.getDelete(fsVO);
 			// register.jsp로부터의 요청을 수신하고, result.jsp에 전송하는 객체 dispatcher를 생성.
 			dispatcher = request.getRequestDispatcher("/WEB-INF/fs/result2.jsp");
-			
 			// 문자열 storeVO라는 key, storeVO라는 value로 지정한다.
 			request.setAttribute("fsVO", fsVO);
 			
@@ -73,7 +71,6 @@ public class DeleteController extends HttpServlet {
 	        out.println("</script>");
 	        out.close(); // 스트림 자원 반환
 	        return;
-			//dispatcher = request.getRequestDispatcher("/WEB-INF/sample.jsp");
 		}
 		dispatcher.forward(request, response);
 		System.out.print("1111");

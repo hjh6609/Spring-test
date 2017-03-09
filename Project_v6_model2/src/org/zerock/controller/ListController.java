@@ -49,7 +49,5 @@ public class ListController extends HttpServlet {
 
 		request.setAttribute("list", fsList);
 		dispatcher.forward(request, response);
-
 	}// doGet()
-
 }

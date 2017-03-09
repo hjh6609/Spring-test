@@ -65,7 +65,7 @@ public class FoodStoreDAO {
 			System.out.println("REGISTER COMPLETE");
 			return true;
 		} // else
-	}// register()
+	}// 
 	
 	// DB에서 글 삭제
 	public boolean getDelete(FoodStore vo) throws Exception {
@@ -286,7 +286,6 @@ public class FoodStoreDAO {
 				while (rs.next()) {
 
 					FoodStore fsVO = new FoodStore();
-
 					// ResultSet클래스의 getString()메소드는 현재 커서(row)의 지정된 매개변수로 넘어온
 					// 위치의 컬럼의 값을 String타입으로 반환한다. 주의할 점은 인덱스번호가 0이 아니라
 					// 1부터 시작한다는 점이다.
@@ -308,6 +307,6 @@ public class FoodStoreDAO {
 		}.executeJob();
 
 		return fsList;
-	}// getList()
+	}// 
 
 }// class

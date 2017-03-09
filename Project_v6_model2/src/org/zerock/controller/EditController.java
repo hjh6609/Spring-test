@@ -68,7 +68,6 @@ public class EditController extends HttpServlet{
 		fsVO.setNumber( Integer.parseInt(request.getParameter("number") ) );
 		fsVO.setTitle(request.getParameter("title"));
 		fsVO.setContent(request.getParameter("content"));
-		//fsVO.setPwd( Integer.parseInt(request.getParameter("pwd") ) );
 		try{
 			response.setContentType("text/html; charset=UTF-8");
 			service.getEdit2(fsVO);
@@ -86,7 +85,6 @@ public class EditController extends HttpServlet{
 	        out.println("</script>");
 	        out.close(); // 스트림 자원 반환
 	        return;
-			//dispatcher = request.getRequestDispatcher("/WEB-INF/sample.jsp");
 		}
 		dispatcher.forward(request, response);
 		System.out.print("1111");

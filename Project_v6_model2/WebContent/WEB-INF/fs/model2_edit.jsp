@@ -15,11 +15,8 @@
 <title>Model2_edit</title>
 </head>
 <body>
-
-		<!--	1.	데이터를 사용자로부터 입력받고 등록 버튼을 누르는 순간 post방식으로 request를 
+	<!--	1.	데이터를 사용자로부터 입력받고 등록 버튼을 누르는 순간 post방식으로 request를 
 					EditController로 날린다. 즉 EditController의 doPost()메소드가 호출된다.-->
-	
-	
 	<form method="post" align = "center"> 
 		<!-- hidden으로 idx값을 넘겨주자. -->
 		<input type="hidden" name="number" value="<%=num%>">
@@ -42,6 +39,5 @@
 		</div>
 		</c:forEach>
 	</form> 
-  	
 </body>
 </html>
